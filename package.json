@@ -1,0 +1,52 @@
+{
+  "name": "hyesuneko",
+  "version": "1.0.0",
+  "description": "A lightweight scraper or parser library inspired by nekopoi but safe for general use.",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      },
+      "default": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "scraper",
+    "parser",
+    "hyesun",
+    "anime",
+    "library"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && tsconfig-to-dual-package",
+    "build:esm": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "test": "ts-node src/index.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Hyesun",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "rimraf": "^5.0.10",
+    "ts-node": "^10.9.1",
+    "tsconfig-to-dual-package": "^1.1.0",
+    "typescript": "^5.3.3"
+  }
+}
