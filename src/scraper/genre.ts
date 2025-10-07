@@ -1,10 +1,16 @@
 import { load } from "cheerio";
-import { headersConfig } from "../utils/config.js";
+import { headersConfig, baseUrl, endpoints } from "../utils/config.js";
 import { Genre, IError } from "../types/interfaces.js";
 
+
+/**
+ * Get a random hentai episode or page.
+ *
+ * @returns {Promise<Genre[] | IError>} Object of hentai episode or page metadata.
+ */
 export const getGenres = async (): Promise<Genre[] | IError> => {
   try {
-    const res = await fetch("https://nekopoi.care/genre-list/", {
+    const res = await fetch(baseUrl + endpoints.genre, {
       method: "GET",
       headers: headersConfig.headers,
     });

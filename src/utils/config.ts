@@ -13,6 +13,7 @@ export const endpoints = {
 	latest: '/category/hentai/page/__PAGE',
 	search: '/search/__QUERY',
 	random: '/random',
+	genre: "/genre-list/",
 };
 
 /**
